@@ -13,7 +13,6 @@ public class MoogleTester {
 	public static void main(String[] args){
 		SampleSearch();
 	}
-	
 	public static void SampleSearch(){
 		String movieFileName = "data-micro/movies.csv";
 		String ratingFileName = "data-micro/ratings.csv";
@@ -24,7 +23,6 @@ public class MoogleTester {
 		Map<Integer, Movie> movies = s.getAllMovies();
 		Map<Integer, Rating> ratings;
 		int numRatings = 0;
-		
 		for(Integer key: movies.keySet()){
 			System.out.println(movies.get(key).toString());
 			ratings = movies.get(key).getRating();
@@ -56,8 +54,14 @@ public class MoogleTester {
 		List<Movie> sortedMovies = s.sortByTitle(foundMovies, true);
 		printResults("Sorted by title in ascending order", sortedMovies, 5);
 		
-		sortedMovies = s.sortByRating(foundMovies, false);
-		printResults("Sorted by rating in descending order", sortedMovies, 5);
+		List<Movie> sortedMovies2 = s.sortByTitle(foundMovies, false);
+		printResults("Sorted by title in descending order", sortedMovies2, 5);
+		
+		sortedMovies = s.sortByRating(foundMovies, true);
+		printResults("Sorted by rating in ascending order", sortedMovies, 5);
+		
+		sortedMovies2 = s.sortByRating(foundMovies, false);
+		printResults("Sorted by rating in descending order", sortedMovies2, 5);
 		
 		year = 2012;
 		foundMovies = s.advanceSearch(null, tag, year);
